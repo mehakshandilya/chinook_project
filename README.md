@@ -27,7 +27,7 @@ Fully metadata-driven — adding a new table requires only a metadata record, no
 02_load_raw: Staging to Raw
 
 Reads active tables from metadata
-Writes each table as a dated Parquet snapshot:
+Writes each table as a dated Parquet snapshot in the following format:
 <base_path>/<table_name>/<YYYY/MM/DD>/<table_name>.parquet
 Validates source vs. target row counts
 Logs execution details to child_metrics_metadata

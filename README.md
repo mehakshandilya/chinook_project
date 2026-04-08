@@ -16,14 +16,6 @@ Orchestration: Databricks Jobs (parameterized notebooks)
 Version Control: GitHub (Databricks Git integration)
 
 
-Repository Structure
-├── 01_extract_from_source.py     # Source → Staging (metadata-driven extraction)
-├── 02_load_raw.py                # Staging → Raw (Parquet snapshots with row count logging)
-├── 03_raw_to_bronze.py           # Raw → Bronze (Delta table load from latest snapshot)
-├── 04_bronze_to_silver.py        # Bronze → Silver (DQX validation + cleaning transformations)
-├── 05_silver_to_gold.py          # Silver → Gold (dimensional model + SCD Type 2)
-└── README.md
-
 **Pipeline Notebooks**
 01_extract_from_source: Source to Staging
 
@@ -56,14 +48,13 @@ Email regex validation (Customer, Employee)
 Positive-value checks (UnitPrice, Quantity, Milliseconds)
 
 
-Routes failed records to quarantine_<tablename> tables with dqx_failure_reason and dqx_failed_at columns
+Routes failed records to quarantine_table with dqx_failure_reason and dqx_failed_at columns
 Applies cleaning transformations to valid records:
 
 Trim whitespace, replace empty strings with null
 Derive full_name (Customer, Employee)
 Standardize Country to uppercase
 Cast InvoiceDate to date type
-
 
 Logs outcomes to silver.dqx_execution_log
 

@@ -17,6 +17,7 @@ Version Control: GitHub (Databricks Git integration)
 
 
 **Repository Structure**
+
 ├── 01_extract_from_source.py     # Source → Staging (metadata-driven extraction)
 ├── 02_load_raw.py                # Staging → Raw (Parquet snapshots with row count logging)
 ├── 03_raw_to_bronze.py           # Raw → Bronze (Delta table load from latest snapshot)
